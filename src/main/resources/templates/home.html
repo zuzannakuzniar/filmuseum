@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Filmuseum </title>
+</head>
+<body>
+<h1>Welcome to Filmuseum</h1>
+This is my own implementation of Filmweb.
+To access all the information you need to be logged in.
+
+<dir>
+
+    <form method="GET" th:action="@{/login/}">
+        <input type="submit" value="Login"/>
+    </form>
+</dir>
+</body>
+</html>
