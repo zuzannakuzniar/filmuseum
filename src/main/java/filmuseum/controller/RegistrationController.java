@@ -1,6 +1,7 @@
 package filmuseum.controller;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +29,12 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String processRegistration(RegistrationForm form){
+    public ModelAndView processRegistration(RegistrationForm form){
         ModelAndView mv = new ModelAndView();
         mv.addObject("username", form.getUsername());
         mv.addObject("password", form.getPassword());
         mv.addObject("fullname", form.getFullname());
         userRepository.save(form.toUser(passwordEncoder));
-        return "redirect:/login";
+        return new ModelAndView("login");
     }
 }

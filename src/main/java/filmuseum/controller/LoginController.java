@@ -1,5 +1,8 @@
 package filmuseum.controller;
 
+import filmuseum.entity.Login;
+import filmuseum.entity.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,9 +32,21 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping
-    public String logginIn(){
-        return "redirect:/logged/";
+    @RequestMapping(value = "/processLogin", method = RequestMethod.POST)
+    public ModelAndView processLogin(@ModelAttribute("login") User user) {
+
+//        String userName = user.getUsername();
+//        String password = user.getPassword();
+//        String passwordDB = userService.getByUsername(userName).getPassword();
+//        String usernameDB = userService.getUserById(userService.getByUsername(userName).getId()).getUsername();
+
+//        if (usernameDB.equalsIgnoreCase(userName)
+//                && passwordDB.equalsIgnoreCase(password)) {
+            ModelAndView mv = new ModelAndView("loggedPage");
+            return mv;
+//        } else {
+//            throw new UsernameNotFoundException("Try again");
+//        }
 
     }
 

@@ -1,6 +1,8 @@
 package filmuseum.service;
 
+import filmuseum.entity.RegistrationForm;
 import org.hibernate.ObjectNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import filmuseum.DAO.UserRepository;
 import filmuseum.entity.Login;
@@ -13,9 +15,11 @@ import java.util.Optional;
 public class UserService {
 
     private UserRepository userRepository;
+    private BCryptPasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User getUserById(Long id){
@@ -35,7 +39,7 @@ public class UserService {
         User resultUser = new User();
         resultUser.setId(user.getId());
         resultUser.setUsername(user.getUsername());
-        resultUser.setPassword(user.getPassword());
+        resultUser.setPassword(passwordEncoder.encode(user.getPassword()));
         resultUser.setFullname(user.getFullname());
         resultUser.setLikedFilmes(user.getLikedFilmes());
         resultUser.setUsersReviews(user.getUsersReviews());
@@ -47,7 +51,7 @@ public class UserService {
         if(toBeUpdated.isPresent()){
             User updatedUser = toBeUpdated.get();
             updatedUser.setUsername(user.getUsername());
-            updatedUser.setPassword(user.getPassword());
+            updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
             updatedUser.setFullname(user.getFullname());
             return updatedUser;
         } else { throw new ObjectNotFoundException(id, User.class.getName()); }
@@ -60,7 +64,7 @@ public class UserService {
 
     }
 
-    public User findByUsername(String username) {
+    public User getByUsername(String username) {
         return userRepository.findUserByUsername(username);
     }
 

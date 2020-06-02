@@ -11,30 +11,29 @@
 </div>
 <p>New here? Click
     <a th:href="@{/register}">here</a> to register.</p>
-<!-- tag::thAction[] -->
-<!--<form method="POST" th:action="@{/login}" id="loginForm">-->
-    <!--&lt;!&ndash; end::thAction[] &ndash;&gt;-->
-    <!--<label for="username">Username: </label>-->
-    <!--<input type="text" name="username" id="username" /><br/>-->
-    <!--<label for="password">Password: </label>-->
-    <!--<input type="password" name="password" id="password" /><br/>-->
-    <!--<input type="submit" value="Login"/>-->
-<!--</form>-->
-<form name='f' action="login" method='POST'>
-    <table>
-        <tr>
-            <td>User:</td>
-            <td><input type='text' name='username' value=''></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type='password' name='password' /></td>
-        </tr>
-        <tr>
-            <td><input name="submit" type="submit" value="submit" /></td>
-        </tr>
-    </table>
+<form method="POST" th:action="@{/login}" id="loginForm">
+    <!-- end::thAction[] -->
+    <label for="username">Username: </label>
+    <input type="text" name="username" id="username" /><br/>
+    <label for="password">Password: </label>
+    <input type="password" name="password" id="password" /><br/>
+    <input type="submit" value="Login"/>
 </form>
+<!--<form name='f' action="login" method='POST'>-->
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<td>User:</td>-->
+            <!--<td><input type='text' name='username' value=''></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Password:</td>-->
+            <!--<td><input type='password' name='password' /></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td><input name="submit" type="submit" value="submit" /></td>-->
+        <!--</tr>-->
+    <!--</table>-->
+<!--</form>-->
 <form method="POST" th:action="@{/logout}">
     <input type="submit" value="Logout"/>
 </form>

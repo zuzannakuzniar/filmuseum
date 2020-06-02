@@ -9,7 +9,7 @@ public class LoggedPageController {
 
     private ModelAndView mv = new ModelAndView();
 
-    @GetMapping
+    @GetMapping("/successful")
     public ModelAndView getLoggedPage(){
 
         mv.setViewName("loggedPage");
