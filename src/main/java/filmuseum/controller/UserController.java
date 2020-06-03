@@ -3,7 +3,7 @@ package filmuseum.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import filmuseum.entity.User;
-import filmuseum.service.UserService;
+import filmuseum.service.UserServiceImpl;
 
 import java.util.List;
 
@@ -11,36 +11,36 @@ import java.util.List;
 @RequestMapping("/users/")
 public class UserController {
 
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public UserController(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
 
     @GetMapping("/{id}/")
     public User getUserById(@PathVariable("id") Long id){
-        return userService.getUserById(id);
+        return userServiceImpl.getUserById(id);
     }
 
     @GetMapping
     public List<User> getAllUsers(){
-        return userService.getAllUsers();
+        return userServiceImpl.getAllUsers();
     }
 
     @PostMapping
     public User addUser(@RequestBody User user){
-        return userService.addUser(user);
+        return userServiceImpl.addUser(user);
     }
 
     @DeleteMapping("/{id}/")
     @ResponseStatus(HttpStatus.OK)
     public void deleteUser(@PathVariable Long id){
-         userService.deleteUser(id);
+         userServiceImpl.deleteUser(id);
     }
 
     @PutMapping("/{id}/")
     public User updateUser(@PathVariable Long id, @RequestBody User user){
-        return userService.updateUser(id, user);
+        return userServiceImpl.updateUser(id, user);
     }
 
 }

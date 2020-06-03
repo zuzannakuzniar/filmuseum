@@ -19,10 +19,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
+    private String email;
     private String password;
     private String fullname;
     @Transient
     private String passwordConfirm;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles",
+    joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 
     @ManyToMany(targetEntity = Film.class)
     private List<Film> likedFilmes;
@@ -33,8 +40,8 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String fullname) {
-        this.username = username;
+    public User(String email, String password, String fullname) {
+        this.email = email;
         this.password = password;
         this.fullname = fullname;
     }

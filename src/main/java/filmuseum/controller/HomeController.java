@@ -1,6 +1,7 @@
 package filmuseum.controller;
 
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -9,36 +10,34 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/home/")
 public class HomeController {
 
-    @GetMapping
-    public ModelAndView getHomePage(){
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("home");
-        return mv;
+    @GetMapping("/")
+    public String root() {
+        return "home";
     }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+    @GetMapping("/logged")
+    public String logged() {
+        return "loggedPage";
+    }
+
+//    @GetMapping("/")
+//    public ModelAndView getHomePage(){
+//        ModelAndView mv = new ModelAndView();
+//        mv.setViewName("home");
+//        return mv;
+//    }
+//
 //    @ResponseBody
-////    @PostMapping(name = "/films/")
-////    public String processToFilms(){
-////        ModelAndView mv = new ModelAndView();
-////        mv.setViewName("films");
-////        return "redirect:/films/";
-////    }
-////
-////
-////    @ResponseBody
-////    @PostMapping(name = "/reviews/")
-////    public String processToReviews(){
-////        ModelAndView mv = new ModelAndView();
-////        mv.setViewName("reviews");
-////        return "redirect:/reviews/";
-////    }
-
-    @ResponseBody
-    @PostMapping(name = "/login/")
-    public String processToLogin(){
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("login");
-        return "redirect:/login/";
-    }
+//    @PostMapping()
+//    public String processToLogin(){
+//        ModelAndView mv = new ModelAndView();
+//        mv.setViewName("login");
+//        return "login";
+//    }
 
 }
