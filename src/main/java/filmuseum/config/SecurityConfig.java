@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -24,6 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
     }
 
+    @Autowired
+    private DataSource dataSource;
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -33,6 +38,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
         auth.authenticationProvider(authenticationProvider());
+        auth.
+                jdbcAuthentication()
+                .usersByUsernameQuery("select username, password from user where username=?")
+                .authoritiesByUsernameQuery("select u.username, r.name from user u inner join user_role ur " +
+                        "on(u.user_id=ur.user_id) inner join role r on(ur.role_id=r.role_id) where u.username=?")
+                .dataSource(dataSource)
+                .passwordEncoder(bCryptPasswordEncoder());
     }
 
     @Override
@@ -42,7 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .access("hasRole('ROLE_USER')")
                 .antMatchers("/","/**")
                 .access("permitAll")
-                .antMatchers("/users/").hasRole("ADMIN")
                 .and()
                 .formLogin().loginPage("/login/").permitAll()
                 .defaultSuccessUrl("/logged/", true)
@@ -50,8 +61,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/home");
     }
-
-
 
 
     @Bean

@@ -1,5 +1,6 @@
 package filmuseum.service;
 
+import filmuseum.DAO.RoleRepository;
 import filmuseum.entity.RegistrationForm;
 import filmuseum.entity.Role;
 import org.hibernate.ObjectNotFoundException;
@@ -14,22 +15,25 @@ import filmuseum.DAO.UserRepository;
 import filmuseum.entity.Login;
 import filmuseum.entity.User;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
     private BCryptPasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository,
+                       RoleRepository roleRepository,
+                       BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
+
 
     public User getUserById(Long id){
         return userRepository.findById(id)
@@ -46,13 +50,14 @@ public class UserServiceImpl implements UserService {
 
     private User saveUser(User user) {
         User resultUser = new User();
+        Role userRole = roleRepository.findByName("ROLE_USER");
         resultUser.setId(user.getId());
         resultUser.setUsername(user.getUsername());
         resultUser.setPassword(passwordEncoder.encode(user.getPassword()));
         resultUser.setFullname(user.getFullname());
         resultUser.setLikedFilmes(user.getLikedFilmes());
         resultUser.setUsersReviews(user.getUsersReviews());
-        resultUser.setRoles(Arrays.asList(new Role("ROLE_USER")));
+        resultUser.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         return resultUser;
     }
 

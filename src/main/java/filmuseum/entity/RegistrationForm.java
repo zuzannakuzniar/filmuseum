@@ -31,6 +31,6 @@ public class RegistrationForm {
     private String fullname;
 
     public User toUser(BCryptPasswordEncoder passwordEncoder){
-        return new User(username, passwordEncoder.encode(password), fullname);
+        return new User(username, passwordEncoder.encode(password), fullname, email);
     }
 }

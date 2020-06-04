@@ -48,12 +48,8 @@ public class RegistrationController {
         if(existingByEmail != null){
             result.reject("email", null, "This email is already registered.");
         }
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("username", form.getUsername());
-        mv.addObject("password", form.getPassword());
-        mv.addObject("fullname", form.getFullname());
         userRepository.save(form.toUser(passwordEncoder));
-        return "login.html";
+        return "login";
     }
 
     @PostMapping("/login")
