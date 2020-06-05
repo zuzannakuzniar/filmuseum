@@ -49,7 +49,7 @@ public class RegistrationController {
             result.reject("email", null, "This email is already registered.");
         }
         userRepository.save(form.toUser(passwordEncoder));
-        return "login";
+        return "redirect:/login/";
     }
 
     @PostMapping("/login")

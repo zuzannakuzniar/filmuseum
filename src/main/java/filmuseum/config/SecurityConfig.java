@@ -40,11 +40,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
         auth.
                 jdbcAuthentication()
-                .usersByUsernameQuery("select username, password from user where username=?")
-                .authoritiesByUsernameQuery("select u.username, r.name from user u inner join user_role ur " +
-                        "on(u.user_id=ur.user_id) inner join role r on(ur.role_id=r.role_id) where u.username=?")
+                .usersByUsernameQuery("select username, password, enabled  from users where username=?")
+                .authoritiesByUsernameQuery("select u.username, r.name from users u inner join users_roles ur " +
+                        "on(u.user_id=ur.user_id) inner join roles r on(ur.role_id=r.role_id) where u.username=?")
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder());
+//        auth.inMemoryAuthentication().passwordEncoder(bCryptPasswordEncoder())
+//                .withUser("user").password(bCryptPasswordEncoder().encode("123456")).roles("USER")
+//                .and()
+//                .withUser("admin").password(bCryptPasswordEncoder().encode("123456")).roles("USER", "ADMIN");
     }
 
     @Override

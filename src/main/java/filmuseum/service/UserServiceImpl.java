@@ -51,13 +51,16 @@ public class UserServiceImpl implements UserService {
     private User saveUser(User user) {
         User resultUser = new User();
         Role userRole = roleRepository.findByName("ROLE_USER");
+        Set<Role> roles = new HashSet();
+        roles.add(userRole);
         resultUser.setId(user.getId());
         resultUser.setUsername(user.getUsername());
         resultUser.setPassword(passwordEncoder.encode(user.getPassword()));
         resultUser.setFullname(user.getFullname());
         resultUser.setLikedFilmes(user.getLikedFilmes());
         resultUser.setUsersReviews(user.getUsersReviews());
-        resultUser.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        resultUser.setEnabled(Integer.valueOf(1));
+        resultUser.setRoles(roles);
         return resultUser;
     }
 

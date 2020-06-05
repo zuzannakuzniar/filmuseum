@@ -28,6 +28,6 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/login/").setViewName("login");
         registry.addViewController("/logged/").setViewName("logged");
         registry.addViewController("/register/").setViewName("register");
-        registry.addRedirectViewController("/successful/", "/logged/");
+        registry.addRedirectViewController("/login/", "/login/");
     }
 }

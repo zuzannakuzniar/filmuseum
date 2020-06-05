@@ -30,7 +30,6 @@ public class LoginController {
 
     }
 
-
     @Transactional
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPage(@RequestParam(value = "error", required = false) String error,
@@ -44,7 +43,7 @@ public class LoginController {
             errorMessge = "You have been successfully logged out !!";
         }
         model.addAttribute("errorMessge", errorMessge);
-        return "loggedPage";
+        return "logged";
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
@@ -55,4 +54,5 @@ public class LoginController {
         }
         return "redirect:/login?logout=true";
     }
+
 }
