@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4999ef12-980b-4407-8af7-e74cb116a617" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/main/java/filmuseum/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filmuseum/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/filmuseum/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filmuseum/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/filmuseum/controller/FilmController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filmuseum/controller/FilmController.java" afterDir="false" />
@@ -16,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/filmuseum/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filmuseum/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/films.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/films.html" afterDir="false" />
+
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,6 +33,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+
         <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/controller/FilmController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="59">
@@ -51,6 +54,7 @@
           </provider>
         </entry>
       </file>
+
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/service/FilmService.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -61,6 +65,7 @@
                 <element signature="e#485#486#0" expanded="true" />
                 <element signature="e#545#546#0" expanded="true" />
               </folding>
+
             </state>
           </provider>
         </entry>
@@ -70,6 +75,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+
             </state>
           </provider>
         </entry>
@@ -89,6 +95,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -107,6 +114,7 @@
         </map>
       </branch-storage>
     </favorite-branches>
+
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -141,6 +149,7 @@
         <option value="$PROJECT_DIR$/src/main/java/zad2/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/zad2/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+
         <option value="$PROJECT_DIR$/src/main/java/filmuseum/DAO/RoleRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
         <option value="$PROJECT_DIR$/src/main/java/filmuseum/config/SpringSecurityInitializer.java" />
@@ -162,6 +171,7 @@
         <option value="$PROJECT_DIR$/src/main/java/filmuseum/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/allfilms.html" />
         <option value="$PROJECT_DIR$/src/main/resources/data.sql" />
+
       </list>
     </option>
   </component>
@@ -200,8 +210,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+
       <pane id="Scope" />
       <pane id="PackagesPane" />
+
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -242,6 +254,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="filmuseum" type="462c0819:PsiDirectoryNode" />
+
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -251,6 +264,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="filmuseum" type="462c0819:PsiDirectoryNode" />
+
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -290,6 +304,8 @@
           <select />
         </subPane>
       </pane>
+
+
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -470,8 +486,10 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
+
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4979339" visible="true" weight="0.26510066" />
       <window_info id="Structure" order="1" sideWeight="0.50206614" side_tool="true" weight="0.2671141" />
+
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -481,7 +499,9 @@
       <window_info anchor="bottom" id="Thumbnails" weight="0.3286119" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4986577" weight="0.31586403" />
+
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -702,6 +722,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+
     <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/DAO/FilmRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -759,6 +780,7 @@
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.6.RELEASE/spring-security-core-5.1.6.RELEASE.jar!/org/springframework/security/authentication/AuthenticationManager.class">
+
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
@@ -896,6 +918,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -907,6 +930,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/entity/RegistrationForm.java">
+
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
           <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
@@ -916,6 +940,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -924,6 +949,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/service/SecurityServiceImpl.java">
+
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
@@ -933,6 +959,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/controller/RegistrationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
@@ -941,6 +968,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/DAO/RoleRepository.java">
+
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
@@ -950,6 +978,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/entity/Role.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -968,6 +997,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/service/UserServiceImpl.java">
+
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
@@ -1029,6 +1059,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/films/all.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1070,6 +1101,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/films.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1081,12 +1113,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="421">
           <caret line="67" selection-start-line="67" selection-end-line="67" />
+
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/main/java/filmuseum/service/FilmService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
@@ -1096,6 +1130,7 @@
             <element signature="e#485#486#0" expanded="true" />
             <element signature="e#545#546#0" expanded="true" />
           </folding>
+
         </state>
       </provider>
     </entry>
