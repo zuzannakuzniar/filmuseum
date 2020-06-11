@@ -17,7 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
     public ViewResolver myViewResolver(){
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("resources/templates/");
+        viewResolver.setPrefix("/WEB-INF/resources/templates/");
         viewResolver.setSuffix(".html");
         return viewResolver;
     }
@@ -28,6 +28,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/login/").setViewName("login");
         registry.addViewController("/logged/").setViewName("logged");
         registry.addViewController("/register/").setViewName("register");
+        registry.addViewController("/films/").setViewName("films");
+        registry.addViewController("/allfilms/").setViewName("allfilms");
         registry.addRedirectViewController("/login/", "/login/");
     }
 }

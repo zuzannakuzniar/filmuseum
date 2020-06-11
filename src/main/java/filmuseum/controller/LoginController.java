@@ -20,7 +20,6 @@ import javax.transaction.Transactional;
 @RequestMapping("/login/")
 public class LoginController {
 
-    private UserServiceImpl userServiceImpl;
 
     @GetMapping
     public ModelAndView getLogin(){

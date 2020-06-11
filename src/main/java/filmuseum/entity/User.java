@@ -2,20 +2,18 @@ package filmuseum.entity;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
-import javax.validation.constraints.NotEmpty;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 
 @Data
 @Entity
 @Table(name = "users")
+
 public class User implements UserDetails {
 
     @Id
@@ -26,9 +24,11 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private String fullname;
-    private Integer enabled;
+    private Integer enabled = 1;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "users_roles",
     joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
@@ -38,6 +38,7 @@ public class User implements UserDetails {
         return roles;
     }
 
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
@@ -56,8 +57,10 @@ public class User implements UserDetails {
         this.password = password;
         this.fullname = fullname;
         this.username = username;
-        this.enabled = 1;
+        this.roles = new HashSet<>();
+
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

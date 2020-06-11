@@ -38,23 +38,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
         auth.authenticationProvider(authenticationProvider());
-        auth.
-                jdbcAuthentication()
-                .usersByUsernameQuery("select username, password, enabled  from users where username=?")
-                .authoritiesByUsernameQuery("select u.username, r.name from users u inner join users_roles ur " +
-                        "on(u.user_id=ur.user_id) inner join roles r on(ur.role_id=r.role_id) where u.username=?")
-                .dataSource(dataSource)
-                .passwordEncoder(bCryptPasswordEncoder());
-//        auth.inMemoryAuthentication().passwordEncoder(bCryptPasswordEncoder())
-//                .withUser("user").password(bCryptPasswordEncoder().encode("123456")).roles("USER")
-//                .and()
-//                .withUser("admin").password(bCryptPasswordEncoder().encode("123456")).roles("USER", "ADMIN");
+//        auth.
+//                jdbcAuthentication()
+//                .usersByUsernameQuery("select username, password, enabled  from users where username=?")
+//                .authoritiesByUsernameQuery("select u.username, r.name from users u inner join users_roles ur " +
+//                        "on(u.user_id=ur.user_id) inner join roles r on(ur.role_id=r.role_id) where u.username=?")
+//                .dataSource(dataSource)
+//                .passwordEncoder(bCryptPasswordEncoder());
+        auth.inMemoryAuthentication().passwordEncoder(bCryptPasswordEncoder())
+                .withUser("user").password(bCryptPasswordEncoder().encode("123456")).roles("USER")
+                .and()
+                .withUser("admin").password(bCryptPasswordEncoder().encode("123456")).roles("USER", "ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/reviews/","/films/")
+                .antMatchers("/reviews/","/films/", "/allfilms/")
                 .access("hasRole('ROLE_USER')")
                 .antMatchers("/","/**")
                 .access("permitAll")
@@ -63,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/logged/", true)
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/home");
+                .logoutSuccessUrl("/");
     }
 
 

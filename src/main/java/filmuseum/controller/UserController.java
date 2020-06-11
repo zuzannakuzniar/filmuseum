@@ -1,5 +1,6 @@
 package filmuseum.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import filmuseum.entity.User;
@@ -13,6 +14,7 @@ public class UserController {
 
     private UserServiceImpl userServiceImpl;
 
+    @Autowired
     public UserController(UserServiceImpl userServiceImpl) {
         this.userServiceImpl = userServiceImpl;
     }

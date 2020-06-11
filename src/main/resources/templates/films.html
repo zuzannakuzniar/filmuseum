@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>FILMS</title>
 </head>
 <body>
-List of our films
+<p>Wanna see all of our films? Click <a th:href="@{/allfilms/}">here</a></p>
+
+<form method="GET" th:action="@{/allfilms/}" id="allFilms">
+    <ul th:each="film : ${films}">
+        <li th:text="${film}"></li>
+    </ul>
+</form>
+
 </body>
 </html>

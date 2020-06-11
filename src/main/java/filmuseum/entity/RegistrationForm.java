@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.Set;
 
 @Data
 @FieldMatch.List({
@@ -29,6 +30,7 @@ public class RegistrationForm {
     private String confirmEmail;
     @NotEmpty
     private String fullname;
+
 
     public User toUser(BCryptPasswordEncoder passwordEncoder){
         return new User(username, passwordEncoder.encode(password), fullname, email);

@@ -7,12 +7,9 @@
     <title>FILMS</title>
 </head>
 <body>
-<p>Wanna see all of our films? Click <a th:href="@{/allfilms/}">here</a></p>
-
+<p>Here you can see all of our films</p>
 <form method="GET" th:action="@{/allfilms/}" id="allFilms">
-    <ul th:each="film : ${films}">
-        <li th:text="${film}"></li>
-    </ul>
+    <h4 th:each="film : ${films}" th:text="${film}"></h4>
 </form>
 
 </body>

@@ -6,6 +6,7 @@ import filmuseum.entity.Role;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -51,15 +52,17 @@ public class UserServiceImpl implements UserService {
     private User saveUser(User user) {
         User resultUser = new User();
         Role userRole = roleRepository.findByName("ROLE_USER");
-        Set<Role> roles = new HashSet();
+        Set<Role> roles = userRepository.findById(user.getId()).get().getRoles();
         roles.add(userRole);
+
+
+
         resultUser.setId(user.getId());
         resultUser.setUsername(user.getUsername());
         resultUser.setPassword(passwordEncoder.encode(user.getPassword()));
         resultUser.setFullname(user.getFullname());
         resultUser.setLikedFilmes(user.getLikedFilmes());
         resultUser.setUsersReviews(user.getUsersReviews());
-        resultUser.setEnabled(Integer.valueOf(1));
         resultUser.setRoles(roles);
         return resultUser;
     }
@@ -103,14 +106,19 @@ public class UserServiceImpl implements UserService {
         if (user == null){
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),
-                user.getPassword(),
-                mapRolesToAuthorities(user.getRoles()));
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
+                getAuthorities(user));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
+    }
+
+    private static Collection<? extends GrantedAuthority> getAuthorities(User user) {
+        String[] userRoles = user.getRoles().stream().map((role) -> role.getName()).toArray(String[]::new);
+        Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
+        return authorities;
     }
 }

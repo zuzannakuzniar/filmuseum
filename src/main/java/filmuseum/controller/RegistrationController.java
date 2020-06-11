@@ -1,6 +1,7 @@
 package filmuseum.controller;
 
 import filmuseum.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,7 @@ public class RegistrationController {
     private BCryptPasswordEncoder passwordEncoder;
 
 
+    @Autowired
     public RegistrationController(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
@@ -49,7 +51,7 @@ public class RegistrationController {
             result.reject("email", null, "This email is already registered.");
         }
         userRepository.save(form.toUser(passwordEncoder));
-        return "redirect:/login/";
+        return "/login/";
     }
 
     @PostMapping("/login")
