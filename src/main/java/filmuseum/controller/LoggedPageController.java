@@ -7,18 +7,17 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/logged/")
 public class LoggedPageController {
 
-    private ModelAndView mv = new ModelAndView();
 
-    @GetMapping
-    public ModelAndView getLoggedPage(){
-
-        mv.setViewName("loggedPage");
-        return mv;
+    @GetMapping("/logged/")
+    public String getLoggedPage(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("logged");
+        return "logged";
     }
 
-    @ResponseBody
-    @PostMapping
+    @PostMapping("/logged/")
     public String getRedirectPage(){
+        ModelAndView mv = new ModelAndView();
        if(mv.getModel().containsValue("/films/")){
            return "redirect:/films/";
         } else {

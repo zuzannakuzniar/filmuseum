@@ -1,5 +1,7 @@
 package filmuseum.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import filmuseum.entity.Review;
@@ -14,16 +16,22 @@ public class FilmController {
 
     private FilmService filmService;
 
+    @Autowired
     public FilmController(FilmService filmService) {
         this.filmService = filmService;
     }
 
-    @GetMapping("/all/")
-    public List<Film> getFilms() {
-        return filmService.getFilms();
+    @GetMapping("/allfilms/")
+    public ModelAndView getFilms(Model model) {
+        List<Film> films = filmService.getFilms();
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("allFilms", films);
+        mv.setViewName("allfilms");
+        return  mv;
+
     }
 
-    @RequestMapping()
+    @GetMapping("/films/")
     public ModelAndView getFPage(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("films");

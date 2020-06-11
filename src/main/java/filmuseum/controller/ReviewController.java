@@ -1,5 +1,6 @@
 package filmuseum.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import filmuseum.service.ReviewService;
 import filmuseum.entity.Review;
@@ -12,6 +13,7 @@ public class ReviewController {
 
     private ReviewService reviewService;
 
+    @Autowired
     public ReviewController(ReviewService reviewService) {
         this.reviewService = reviewService;
     }
