@@ -9,6 +9,7 @@ import filmuseum.service.FilmService;
 import filmuseum.entity.Film;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/films/")
@@ -21,14 +22,30 @@ public class FilmController {
         this.filmService = filmService;
     }
 
-    @GetMapping("/allfilms/")
-    public ModelAndView getFilms(Model model) {
-        List<Film> films = filmService.getFilms();
+    @GetMapping("/all/")
+    public ModelAndView getFilms() {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("allFilms", films);
         mv.setViewName("allfilms");
+        List<Film> films = filmService.getFilms();
+        mv.addObject("films", films);
         return  mv;
 
+    }
+
+    @GetMapping("/categories/")
+    public ModelAndView getCategories(){
+        ModelAndView mv = new ModelAndView("allfilms");
+        Set<String> categories = filmService.findCategories();
+        mv.addObject("categories", categories);
+        return mv;
+    }
+
+    @GetMapping("/{cat}/")
+    public ModelAndView getFilmsByCategories(@RequestParam("cat") String category){
+        ModelAndView mv = new ModelAndView("allfilms");
+        List<Film> filmsByCategory = filmService.findFilmsByCategory(category);
+        mv.addObject("filmsByCat", filmsByCategory);
+        return mv;
     }
 
     @GetMapping("/films/")

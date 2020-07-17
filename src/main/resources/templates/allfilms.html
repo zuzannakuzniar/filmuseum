@@ -8,9 +8,30 @@
 </head>
 <body>
 <p>Here you can see all of our films</p>
-<form method="GET" th:action="@{/allfilms/}" id="allFilms">
-    <h4 th:each="film : ${films}" th:text="${film}"></h4>
-</form>
-
+<table th:object="${films}" id="allFilms" border="1">
+    <tr>
+        <th>TITLE</th>
+        <th>YEAR</th>
+        <th>CATEGORY</th>
+    </tr>
+    <tr th:each="film :${films}">
+        <td  th:text="${film.getTitle()}"></td>
+        <td  th:text="${film.getYear()}"></td>
+        <td  th:text="${film.getCategory()}"
+             <!--style="cursor: pointer"-->
+             <!--th:data1="${film.getCategory()}"-->
+             <!--th:onclick="'window.location.href=\'/films/' + ${data1} + '/'+'\''"-->
+        ></td>
+    </tr>
+</table>
+<p>Find films by categories</p>
+<table th:object="${categories}" id="categories" border="1">
+    <div th:if="${error}">
+        No categories found.
+    </div>
+    <tr th:each="item :${categories}">
+        <td  th:text="${item}"></td>
+    </tr>
+</table>
 </body>
 </html>

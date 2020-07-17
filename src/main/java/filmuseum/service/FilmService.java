@@ -6,8 +6,10 @@ import filmuseum.DAO.FilmRepository;
 import filmuseum.entity.Film;
 import filmuseum.entity.Review;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class FilmService {
@@ -66,10 +68,24 @@ public class FilmService {
         return film;
     }
 
+    public List<Film> findFilmsByCategory(String category){
+        if(category != null) {
+            return filmRepository.findFilmsByCategory(category);
+        } return null;
+    }
+
+    public Set<String> findCategories(){
+        Set<String> categories = new HashSet<>();
+        List<Film> films = (List<Film>) filmRepository.findAll();
+        for (Film f: films
+             ) {
+            categories.add(f.getCategory());
+        }
+        return categories;
+    }
+
     public List<Review> getListOfReviews(Long id){
         return filmRepository.findById(id).get().getReviews();
     }
-
-
 
 }
