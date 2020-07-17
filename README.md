@@ -1,7 +1,19 @@
 # filmuseum
 Working on my implementation of Filmweb.
 
-Added tomcat dependency because it started as a regular project and then i decided to use Spring.
+
+In this project I'm using: 
+* JAVA 8
+* SPRING BOOT
+* SPRING MVC
+* SPRING SECURITY
+* HIBERNATE
+* MYSQL
+* THYMELEAF
+
+
+
+Added tomcat dependency because it started as a regular project and then I decided to use Spring.
 
 login: user
-password: 123456
+| password: 123456
