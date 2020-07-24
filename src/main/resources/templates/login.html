@@ -5,12 +5,16 @@
     <title>Filmuseum</title>
 </head>
 <body>
-<h1>Login</h1>
-<div th:if="${error}">
-    <p>Unable to login. Check your username and password.</p>
-</div>
-<p>New here? Click
-    <a th:href="@{/register/}">here</a> to register.</p>
+
+<!--<p>New here? Click-->
+    <!--<a th:href="@{/register/}">here</a> to register.</p>-->
+<div align="center">
+    <h1>Login</h1>
+    <div th:if="${error}">
+        <p>Unable to login. Check your username and password.</p>
+    </div>
+User: user | Password: 123456
+    <br/>
 <form method="POST" th:action="@{/login/}" id="loginForm">
     <label for="username">Username: </label>
     <input type="text" name="username" id="username" /><br/>
@@ -21,5 +25,6 @@
 <form method="POST" th:action="@{/logout}">
     <input type="submit" value="Logout"/>
 </form>
+</div>
 </body>
 </html>

@@ -2,10 +2,10 @@ package filmuseum.service;
 
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
-import filmuseum.DAO.FilmRepository;
-import filmuseum.DAO.ReviewRepository;
-import filmuseum.entity.Film;
-import filmuseum.entity.Review;
+import filmuseum.dao.repository.FilmRepository;
+import filmuseum.dao.repository.ReviewRepository;
+import filmuseum.dao.entity.Film;
+import filmuseum.dao.entity.Review;
 
 import java.util.ArrayList;
 import java.util.List;

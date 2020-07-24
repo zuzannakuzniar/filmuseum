@@ -4,9 +4,22 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>FILMS</title>
+    <title>Reviews</title>
 </head>
 <body>
-List of our films
+<p>Here you can see all of our reviews</p>
+<table th:object="${reviews}" id="allReviews" border="1">
+    <tr>
+        <th>AUTHOR</th>
+        <th>DESCRIPTION</th>
+        <th>RATING</th>
+    </tr>
+    <tr th:each="review :${reviews}">
+        <td  th:text="${review.getAuthor()}"></td>
+        <td  th:text="${review.getDescription()}"></td>
+        <td  th:text="${review.getStarRating()}"></td>
+    </tr>
+</table>
+<p> Click <a th:href="@{/reviews/add/}">here</a> to add a review.</p>
 </body>
 </html>

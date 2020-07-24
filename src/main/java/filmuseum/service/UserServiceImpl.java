@@ -1,8 +1,7 @@
 package filmuseum.service;
 
-import filmuseum.DAO.RoleRepository;
-import filmuseum.entity.RegistrationForm;
-import filmuseum.entity.Role;
+import filmuseum.dao.repository.RoleRepository;
+import filmuseum.dao.entity.Role;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,9 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import filmuseum.DAO.UserRepository;
-import filmuseum.entity.Login;
-import filmuseum.entity.User;
+import filmuseum.dao.repository.UserRepository;
+import filmuseum.dao.entity.Login;
+import filmuseum.dao.entity.User;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -100,6 +99,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = userRepository.findUserByUsername(s);
@@ -108,6 +108,11 @@ public class UserServiceImpl implements UserService {
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 getAuthorities(user));
+    }
+
+    public User findByUsername(String username){
+        User user = userRepository.findUserByUsername(username);
+        return user;
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){

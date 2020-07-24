@@ -6,15 +6,19 @@
     <title>Filmuseum </title>
 </head>
 <body>
-<h1>Welcome to Filmuseum</h1>
-This is my own implementation of Filmweb.
-To access all the information you need to be logged in.
+<div align="center">
+    <h1>Welcome to Filmuseum</h1>
+    This is my own implementation of Filmweb.
+    To access all the information you need to be logged in.
+    <dir>
 
-<dir>
+        <form method="GET" th:action="@{/login/}">
+            <input type="submit" value="Login"/>
+        </form>
+    </dir>
+</div>
 
-    <form method="GET" th:action="@{/login/}">
-        <input type="submit" value="Login"/>
-    </form>
-</dir>
+
+
 </body>
 </html>
