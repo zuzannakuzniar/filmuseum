@@ -7,6 +7,7 @@
     <title>FILMS</title>
 </head>
 <body>
+<div align="center">
 <p>Here you can see all of our films</p>
 <table th:object="${films}" id="allFilms" border="1">
     <tr>
@@ -18,20 +19,15 @@
     <tr th:each="film :${films}">
         <td  th:text="${film.getTitle()}"
              style="cursor: pointer"
-             th:onclick="'window.location.href=\'/films/' + ${film.getId()} + '/'+'\''"></td>
+             th:onclick="'window.location.href=\'/reviews/add/' + ${film.getId()} + '/'+'\''"></td>
         <td  th:text="${film.getId()}"></td>
         <td  th:text="${film.getYear()}"></td>
         <td  th:text="${film.getCategory()}"></td>
     </tr>
 </table>
-<!--<p>Find films by categories</p>-->
-<!--<table th:object="${categories}" id="categories" border="1">-->
-    <!--<div th:if="${error}">-->
-        <!--No categories found.-->
-    <!--</div>-->
-    <!--<tr th:each="item :${categories}">-->
-        <!--<td  th:text="${item}"></td>-->
-    <!--</tr>-->
-<!--</table>-->
+    <p>Click <a th:href="@{/films/add/}">here</a> to add a new film.</p>
+
+</div>
+
 </body>
 </html>

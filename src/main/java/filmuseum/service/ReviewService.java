@@ -1,5 +1,6 @@
 package filmuseum.service;
 
+import filmuseum.web.model.ReviewForm;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 import filmuseum.dao.repository.FilmRepository;
@@ -28,14 +29,8 @@ public class ReviewService {
     public List<Review> getAllreviews() { return (List<Review>) reviewRepository.findAll();}
 
     public Review saveReview(Review review){
-        Review resultReview = new Review();
-        resultReview.setLiked(review.isLiked());
-        resultReview.setId(review.getId());
-        resultReview.setStarRating(review.getStarRating());
-        resultReview.setDescription(review.getDescription());
-        resultReview.setAuthor(review.getAuthor());
-
-        return resultReview;
+        ReviewForm resultReview = new ReviewForm();
+        return resultReview.toReview(review.getDescription(), review.getStarRating());
     }
 
     public boolean likeReview(Review review){
@@ -51,7 +46,13 @@ public class ReviewService {
     }
 
     public Review addReviewToAFilm(Review review){
-        reviewRepository.save(review);
+
+      Review newReview = new Review();
+      newReview.setDescription(review.getDescription());
+      newReview.setStarRating(review.getStarRating());
+      newReview.setFilm(review.getFilm());
+      newReview.setAuthor(review.getAuthor());
+      reviewRepository.save(newReview);
 
           Film reviewedFilm = filmRepository.findById(review.getFilm().getId())
                   .orElseThrow(() -> new ObjectNotFoundException(review.getFilm().getId(), Film.class.getName()));

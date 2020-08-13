@@ -7,19 +7,25 @@
     <title>Reviews</title>
 </head>
 <body>
+<div align="center">
 <p>Here you can see all of our reviews</p>
 <table th:object="${reviews}" id="allReviews" border="1">
     <tr>
+
         <th>AUTHOR</th>
         <th>DESCRIPTION</th>
         <th>RATING</th>
+        <th>FILM</th>
     </tr>
     <tr th:each="review :${reviews}">
+
         <td  th:text="${review.getAuthor()}"></td>
         <td  th:text="${review.getDescription()}"></td>
         <td  th:text="${review.getStarRating()}"></td>
+        <td  th:text="${review.getFilm().getTitle()}"></td>
     </tr>
 </table>
-<p> Click <a th:href="@{/reviews/add/}">here</a> to add a review.</p>
+<h1>Click <a th:href="@{~/films/all/}">here</a> to see what films you can review.</h1>
+</div>
 </body>
 </html>

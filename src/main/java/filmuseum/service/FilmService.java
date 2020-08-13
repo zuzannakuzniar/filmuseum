@@ -37,7 +37,7 @@ public class FilmService {
         return resultFilm;
     }
 
-    public Film getFilmDetails(Long id){
+    public Film getFilmById(Long id){
         return filmRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, Film.class.getName()));
     }

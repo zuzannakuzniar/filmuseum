@@ -7,3 +7,5 @@ INSERT INTO films (id, category, title, year) VALUES (2, "DRAMA", "THE NOTEBOOK"
 INSERT INTO films (id, category, title, year) VALUES (3, "ACTION", "AQUAMAN", 2018);
 INSERT INTO films (id, category, title, year) VALUES (4, "COMEDY", "SHREK", 2001);
 INSERT INTO films (id, category, title, year) VALUES (5, "FANTASY", "HARRY POTTER AND THE PHILOSOPHER'S STONE", 2001);
+INSERT INTO reviews (id, description, liked, star_rating, author_user_id, film_id)
+VALUES (2, "GREAT", 0, 5, 1, 5);
