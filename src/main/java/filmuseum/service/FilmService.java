@@ -38,8 +38,12 @@ public class FilmService {
     }
 
     public Film getFilmById(Long id){
-        return filmRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException(id, Film.class.getName()));
+        Optional<Film> film = filmRepository.findById(id);
+        if(!film.isPresent()){
+            throw new ObjectNotFoundException(id, Film.class.getName());
+        }
+        Film foundFilm = film.get();
+        return foundFilm;
     }
 
     public Film update(Long id, Film film) {
