@@ -1,5 +1,6 @@
 # filmuseum
-Working on my implementation of Filmweb.
+Working on my implementation of Filmweb. 
+It allows only logged in users to add films to the page and leave reviews for the films.
 
 
 In this project I'm using: 
@@ -10,10 +11,9 @@ In this project I'm using:
 * HIBERNATE
 * MYSQL
 * THYMELEAF
+* MOCKITO
 
 
-
-Added tomcat dependency because it started as a regular project and then I decided to use Spring.
 
 login: user
 | password: 123456
